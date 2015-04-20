@@ -3,7 +3,7 @@
  * Plugin Name:     Easy Digital Downloads - htaccess Editor
  * Plugin URI:      http://section214.com
  * Description:     Edit the htaccess file through the EDD Tools page
- * Version:         1.0.0
+ * Version:         1.0.1
  * Author:          Daniel J Griffiths
  * Author URI:      http://section214.com
  *
@@ -134,7 +134,7 @@ if( ! class_exists( 'EDD_htaccess_Editor' ) ) {
          */
         public function htaccess_editor() {
             $contents = edd_get_option( 'htaccess_rules', false );
-            
+
             if( ! $contents ) {
                 $contents = edd_get_htaccess_rules();
             } else {
@@ -156,7 +156,7 @@ if( ! class_exists( 'EDD_htaccess_Editor' ) ) {
                                     <input type="hidden" name="edd_action" value="save_htaccess_file" />
                                     <?php wp_nonce_field( 'edd_save_htaccess_nonce', 'edd_save_htaccess_nonce' ); ?>
                                     <?php submit_button( __( 'Save', 'edd-htaccess-editor' ), 'secondary', 'submit', false ); ?>
-                                    <a href="<?php echo add_query_arg( array( 'edd-action' => 'reset_htaccess_file' ) ); ?>" class="button secondary-button" style="color: #ff0000;"><?php _e( 'Reset htaccess file', 'edd-htaccess-editor' ); ?></a>
+                                    <a href="<?php echo esc_url( add_query_arg( array( 'edd-action' => 'reset_htaccess_file' ) ) ); ?>" class="button secondary-button" style="color: #ff0000;"><?php _e( 'Reset htaccess file', 'edd-htaccess-editor' ); ?></a>
                                 </p>
                             </form>
                         <?php } ?>
@@ -227,7 +227,7 @@ if( ! class_exists( 'EDD_htaccess_Editor' ) ) {
          */
         public function override_rules( $rules, $method ) {
             $contents = edd_get_option( 'htaccess_rules', false );
-            
+
             if( $contents ) {
                 $rules = html_entity_decode( stripslashes( $contents ) );
             }

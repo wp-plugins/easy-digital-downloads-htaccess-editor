@@ -2,8 +2,8 @@
 Contributors: section214
 Tags: Easy Digital Downloads, htaccess, rules
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.0.0
+Tested up to: 4.2
+Stable tag: 1.0.1
 
 Edit your htaccess file directly from EDD!
 
@@ -24,6 +24,8 @@ A simple extension for Easy Digital Downloads which adds an htaccess file editor
 None yet
 
 == Changelog ==
+= Version 1.0.1 =
+* FIX: XSS vulnerability in query args
 
 = Version 1.0.0 =
 * Initial release
